@@ -1,15 +1,25 @@
-import Form from './Form'
+import ResearchRoomImage from '../images/salle-recherche.png'
+import { ImageMap } from '@qiuz/react-image-map'
 
 function ResearchRoom() {
+
+    const mapArea = [
+        {
+            width: '10.561056105610561%',
+            height: '10.882352941176471%',
+            left: '72.06923796398806%',
+            top: '49.117647058823536%'
+        }
+    ]
+    
     return (
         <>
-            <Form></Form>
+            <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} />
         </>
     )
 }
 
 export default ResearchRoom
-
 
 /*
 
@@ -21,4 +31,3 @@ export default ResearchRoom
 </map>
 
 */
-
