@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import solution from '../secret/solution'
+import '../style/form.css'
 
 function Form() {
     // Déclaration et initialisation de l'état local pour les noms et quantités des ingrédients saisis
@@ -11,8 +12,6 @@ function Form() {
     const [ing2Qty, setIng2Qty] = useState(0)
     const [ing3Qty, setIng3Qty] = useState(0)
     const [ing4Qty, setIng4Qty] = useState(0)
-
-    console.log(solution)
 
     // On met à jour les états des noms et quantités des ingrédients saisis par le joueur
 
@@ -84,88 +83,56 @@ function Form() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="ingredient-form">
             <fieldset>
                 <legend>Entrez le premier ingrédient</legend>
-                <label htmlFor="ing1">Nom</label>
-                <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
-                <label htmlFor="qtyIng1">Quantité</label>
-                <input type="number" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
+                <div className="form-group">
+                    <label htmlFor="ing1">Nom</label>
+                    <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="qtyIng1">Quantité</label>
+                    <input type="number" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Entrez le deuxième ingrédient</legend>
-                <label htmlFor="ing2">Nom</label>
-                <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
-                <label htmlFor="qtyIng2">Quantité</label>
-                <input type="number" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
+                <div className="form-group">
+                    <label htmlFor="ing2">Nom</label>
+                    <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="qtyIng2">Quantité</label>
+                    <input type="number" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Entrez le troisième ingrédient</legend>
-                <label htmlFor="ing3">Nom</label>
-                <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
-                <label htmlFor="qtyIng3">Quantité</label>
-                <input type="number" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
+                <div className="form-group">
+                    <label htmlFor="ing3">Nom</label>
+                    <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="qtyIng3">Quantité</label>
+                    <input type="number" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Entrez le quatrième ingrédient</legend>
-                <label htmlFor="ing4">Nom</label>
-                <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
-                <label htmlFor="qtyIng4">Quantité</label>
-                <input type="number" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
+                <div className="form-group">
+                    <label htmlFor="ing4">Nom</label>
+                    <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="qtyIng4">Quantité</label>
+                    <input type="number" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
+                </div>
             </fieldset>
-            <input type="submit" value="Fabrication du remède" />
+            <div className="btn" >
+            <input type="submit" value="Fabrication du remède" className="submit-button" />
+            </div>
         </form>
     )
 }
 
 export default Form
-
-/*
-
-function arraysCheck(solution, remedy) {
-    // Check if the arrays have the same length
-    if (solution.length !== remedy.length) {
-        return false
-    }
-
-    // Sort both arrays to ensure consistent order
-    const sortedSolution = solution.slice().sort()
-    const sortedRemedy = remedy.slice().sort()
-
-    // Iterate through the arrays and compare each object
-    for (let i = 0; i < sortedSolution.length; i++) {
-        if (!objectsAreEqual(sortedSolution[i], sortedRemedy[i])) {
-            return false
-        }
-    }
-
-    return true
-}
-
-function objectsAreEqual(obj1, obj2) {
-    // Compare objects based on their properties
-    const keys1 = Object.keys(obj1)
-    const keys2 = Object.keys(obj2)
-
-    if (keys1.length !== keys2.length) {
-        return false
-    }
-
-    for (const key of keys1) {
-        if (obj1[key] !== obj2[key]) {
-            return false
-        }
-    }
-
-    return true
-}
-
-function verifyPassword(passwordUser, passwordSolution){
-    if (passwordUser === passwordSolution){
-        echo ("Accès autorisé");
-    } else {
-        echo ("Accès interdit");
-    }
-}
-
-*/

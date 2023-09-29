@@ -1,30 +1,30 @@
 const ing1 = {
-    nom: 'abc',
-    qty: 1
+    nom: 'Capsanil',
+    qty: 10
 }
 
 const ing2 = {
-    nom: 'abc',
-    qty: 2
+    nom: 'Dyphixine',
+    qty: 30
 }
 
 const ing3 = {
-    nom: 'abc',
-    qty: 3
+    nom: 'Hematosol',
+    qty: 10
 }
 
 const ing4 = {
-    nom: 'abc',
-    qty: 4
+    nom: 'Naloxone',
+    qty: 50
 }
 const remedy = [ing1, ing2, ing3, ing4]
 
-const passwordJ1 = ''
+const passwordPcAnalyse = '3007'
 
-const passwordJ2 = ''
+const passwordPcResearch = '1399'
 
-const passwordJ3 = ''
+const passwordCasierArchives = '280923'
 
-const passwordJ4 = ''
+const passwordCasierReserve = '2579'
 
-export default { remedy, passwordJ1, passwordJ2, passwordJ3, passwordJ4 }
+export default { remedy, passwordPcAnalyse, passwordPcResearch, passwordCasierArchives, passwordCasierReserve }

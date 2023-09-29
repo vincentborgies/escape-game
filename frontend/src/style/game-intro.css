@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Press+Start+2P&display=swap');
+
+.img1 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity:0.5;
+}
+
+
+.box-intro {
+    text-align: center;
+    
+}
+
+.box-intro .container-intro {
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    position: absolute;
+    color: white;
+    background-color: rgba(193, 193, 195, 0.349);
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+
+}
+
+.box-intro .container-intro h2 {
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    text-decoration: underline;}
+
+.box-intro .container-intro .regles {
+    padding: 0 10px 0 10px;
+}
+
+.box-intro .container-intro .regles ul {
+    margin-top: 20px;
+    text-align: center;
+    gap: 15px;
+    padding-bottom: 100px;
+}
+
+.box-intro .container-intro .regles ul li {
+    text-align: center;
+}
+
+.box-intro .container-intro .materiel {
+    padding: 0 20px 0 20px;
+}
+
+.box-intro .container-intro .materiel ul {
+    padding: 20px;
+}
+
+.box-intro .container-intro .materiel ul li{
+    text-align: center;
+}
+
+.box-intro .container-intro .scenario {
+    text-align: center;
+}
+
+.box-intro .container-intro .scenario p {
+    padding: 20px 0 0px 0px;
+}
+
+.play {
+    text-align: center;
+}
+
+.play h3 {
+    text-transform: uppercase;
+    margin-top: 92vh;
+    margin-left: 30vw;
+    position: absolute;
+    color: rgb(3, 248, 40);
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 30px;
+}

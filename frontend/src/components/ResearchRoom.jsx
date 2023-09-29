@@ -1,20 +1,29 @@
 import ResearchRoomImage from '../images/salle-recherche.png'
+import ModalWindow from './ModalWindow'
 import { ImageMap } from '@qiuz/react-image-map'
+import '../style/room.css'
+import Form from './Form'
 
-function ResearchRoom() {
+function ResearchRoom({ isOpen, setIsOpen, closeModal }) {
+    const makeRemedy = () => {
+        setIsOpen(true)
+    }
 
-    const mapArea = [
+    const remedy = [{ width: '9.529025191675794%', height: '31.25%', left: '19.600561336254106%', top: '25.9765625%' }]
+    const pc = [
         {
-            width: '10.561056105610561%',
-            height: '10.882352941176471%',
-            left: '72.06923796398806%',
-            top: '49.117647058823536%'
+            width: '5.115511551155116%',
+            height: '7.058823529411764%',
+            left: '51.60719175936759%',
+            top: '43.23529411764705%'
         }
     ]
-    
+
     return (
         <>
-            <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} />
+            <ImageMap className="usage-map" src={ResearchRoomImage} map={remedy} onMapClick={makeRemedy} />
+            <h2 id="room-title">Salle de recherches</h2>
+            {isOpen ? <ModalWindow content={<Form />} isOpen={isOpen} closeModal={closeModal} /> : ''}
         </>
     )
 }

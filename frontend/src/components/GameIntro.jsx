@@ -1,4 +1,5 @@
 import homeImage from '../images/accueil.png'
+import '../style/game-intro.css'
 
 function GameIntro({ Link, navigate }) {
     const handleClick = () => {
@@ -7,10 +8,10 @@ function GameIntro({ Link, navigate }) {
 
     return (
         <div>
-            <img src={homeImage} alt="" />
-            <h1>Bienvenue dans le Laboratoire Maudit</h1>
-            <div className="box">
-                <div className="container">
+            <img className='img1' src={homeImage} alt="" />
+            <h1 className='title-intro'>Bienvenue dans le Laboratoire Maudit</h1>
+            <div className="box-intro">
+                <div className="container-intro">
                     <div className="regles">
                         <h2>Règles du jeu</h2>
                         <ul>
@@ -27,10 +28,11 @@ function GameIntro({ Link, navigate }) {
                     </div>
                     <div className="materiel">
                         <h2>Matériel</h2>
-                        <p>
-                            Un ordinateur De quoi prendre des notes si nécessaire Un moyen de communiquer avec vos
-                            co-équipiers : Discord, skype etc. Privilégiez une communication audio si vous le pouvez.
-                        </p>
+                        <ul>
+                        <li>Un ordinateur</li> 
+                        <li>De quoi prendre des notes si nécessaire</li> 
+                        <li>Un moyen de communiquer avec vos co-équipiers : Discord, skype etc. Privilégiez une communication audio si vous le pouvez.</li>
+                        </ul>
                     </div>
                     <div className="scenario">
                         <h2>Scénario</h2>

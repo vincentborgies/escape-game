@@ -2,6 +2,7 @@ import ReserveImage from '../images/reserve.png'
 import ArchiveRoomImage from '../images/salle-archives.png'
 import AnalyseRoomImage from '../images/salle-analyse.png'
 import ResearchRoomImage from '../images/salle-recherche.png'
+import '../style/choose-room.css'
 
 function ChooseRoom({ Link }) {
     return (
