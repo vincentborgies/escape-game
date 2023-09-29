@@ -15,11 +15,10 @@ body{
     
 }
 
+
 .container{
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
 }
 
 .row{
@@ -36,6 +35,9 @@ body{
     padding: 0;
     position: relative;
     overflow: hidden;
+    width:50%;
+    height:50%;
+    
     
 }
 

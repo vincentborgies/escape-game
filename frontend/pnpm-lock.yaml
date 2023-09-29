@@ -12,6 +12,7 @@ specifiers:
   eslint-plugin-react: ^7.33.2
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.4.3
+  howler: ^2.2.4
   react: ^18.2.0
   react-dom: ^18.2.0
   react-modal: ^3.16.1
@@ -23,6 +24,7 @@ dependencies:
   '@fortawesome/free-solid-svg-icons': 6.4.2
   '@fortawesome/react-fontawesome': 0.2.0_n6er2j2sfff3f2kho72l4xukey
   '@qiuz/react-image-map': 1.1.8
+  howler: 2.2.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-modal: 3.16.1_biqbaboplfbrettd7655fr4n2y
@@ -1419,6 +1421,10 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /howler/2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
+    dev: false
 
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}

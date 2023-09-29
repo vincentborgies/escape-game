@@ -3,14 +3,17 @@ import ModalWindow from './ModalWindow'
 import { ImageMap } from '@qiuz/react-image-map'
 import '../style/room.css'
 import Form from './Form'
+import Timer from './timer'
 
 function ResearchRoom({ isOpen, setIsOpen, closeModal }) {
     const makeRemedy = () => {
         setIsOpen(true)
     }
 
-    const remedy = [{ width: '9.529025191675794%', height: '31.25%', left: '19.600561336254106%', top: '25.9765625%' }]
-    const pc = [
+    const mapArea = [
+        //coordonnées de l'endroit pour fabriquer le remède
+        { width: '9.529025191675794%', height: '31.25%', left: '19.600561336254106%', top: '25.9765625%' },
+        //coordonnées du pc
         {
             width: '5.115511551155116%',
             height: '7.058823529411764%',
@@ -21,8 +24,9 @@ function ResearchRoom({ isOpen, setIsOpen, closeModal }) {
 
     return (
         <>
-            <ImageMap className="usage-map" src={ResearchRoomImage} map={remedy} onMapClick={makeRemedy} />
+            <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} onMapClick={makeRemedy} />
             <h2 id="room-title">Salle de recherches</h2>
+            <Timer style={{} } />
             {isOpen ? <ModalWindow content={<Form />} isOpen={isOpen} closeModal={closeModal} /> : ''}
         </>
     )

@@ -1,18 +1,34 @@
 import homeImage from '../images/accueil.png'
 import '../style/game-intro.css'
+import music from '../audio/music.mp3'
+import { Howl } from 'howler'
+import { useEffect } from 'react'
 
 function GameIntro({ Link, navigate }) {
+    const sound = new Howl({
+        src: [music],
+        volume: 0.5, // Ajustez le volume selon vos besoins
+        loop: true // Pour répéter la musique en continu
+    })
+
+    useEffect(() => {
+        sound.play()
+        return () => {
+            sound.stop() // Arrête la musique lorsque le composant est démonté
+        }
+    }, [])
+
     const handleClick = () => {
         navigate('choose-room')
     }
 
     return (
         <div>
-            <img className='img1' src={homeImage} alt="" />
-            <h1 className='title-intro'>Bienvenue dans le Laboratoire Maudit</h1>
+            <img className="img1" src={homeImage} alt="" />
+            <h1 className="title-intro">Bienvenue dans le Laboratoire Maudit</h1>
             <div className="box-intro">
                 <div className="container-intro">
-                    <div className="regles">
+                    <div className="subBox" id="regles">
                         <h2>Règles du jeu</h2>
                         <ul>
                             <li> L'escape game se joue en équipe de 4 : vous avez 1h pour trouver l'antidote </li>
@@ -26,15 +42,18 @@ function GameIntro({ Link, navigate }) {
                             </li>
                         </ul>
                     </div>
-                    <div className="materiel">
+                    <div className="subBox" id="materiel">
                         <h2>Matériel</h2>
                         <ul>
-                        <li>Un ordinateur</li> 
-                        <li>De quoi prendre des notes si nécessaire</li> 
-                        <li>Un moyen de communiquer avec vos co-équipiers : Discord, skype etc. Privilégiez une communication audio si vous le pouvez.</li>
+                            <li>Un ordinateur</li>
+                            <li>De quoi prendre des notes si nécessaire</li>
+                            <li>
+                                Un moyen de communiquer avec vos co-équipiers : Discord, skype etc. Privilégiez une
+                                communication audio si vous le pouvez.
+                            </li>
                         </ul>
                     </div>
-                    <div className="scenario">
+                    <div className="subBox" id="scenario">
                         <h2>Scénario</h2>
                         <p>
                             Vous faites partie d'une équipe de quatre chercheurs au sein d'un laboratoire expérimentant
@@ -46,12 +65,12 @@ function GameIntro({ Link, navigate }) {
                             soit trop tard. Choisissez une salle pour commencer votre mission.
                         </p>
                     </div>
+                    <div className="play">
+                        <Link to={'/choose-room'} onClick={handleClick}>
+                            <span>commencer le jeu</span>
+                        </Link>
+                    </div>
                 </div>
-            </div>
-            <div className="play">
-                <Link to={'/choose-room'} onClick={handleClick}>
-                    <h3>commencer le jeu</h3>
-                </Link>
             </div>
         </div>
     )

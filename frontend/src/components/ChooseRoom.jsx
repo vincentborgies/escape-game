@@ -6,7 +6,7 @@ import '../style/choose-room.css'
 
 function ChooseRoom({ Link }) {
     return (
-        <div className="box">
+        <div className="box-room">
             <div className="container">
                 <div className="row">
                     <div className="img">
