@@ -14,6 +14,16 @@ function App() {
     const [isClasseur, setIsClasseur] = useState(false)
     const [isCommode, setIsCommode] = useState(false)
 
+    //activité des éléments cliquables de la salle d'analyse
+    const [isPcAnalyse, setIsPcAnalyse] = useState(false)
+    const [isAffiche, setIsAffiche] = useState(false)
+
+    //activité des éléments cliquables de la salle de recherches
+
+    //activités des éléments cliquables de la salle de reserve
+    const [isBoite, setIsBoite] = useState(false)
+    const [isEtagere, setIsEtagere] = useState(false)
+
     const navigate = useNavigate()
 
     const closeModal = () => {
@@ -24,6 +34,18 @@ function App() {
         if (isClasseur) {
             setIsClasseur(false)
         }
+        if (isBoite) {
+            setIsBoite(false)
+        }
+        if (isEtagere) {
+            setIsEtagere(false)
+        }
+        if (isPcAnalyse) {
+            setIsPcAnalyse(false)
+        }
+        if (isAffiche) {
+            setIsAffiche(false)
+        }
     }
 
     return (
@@ -32,7 +54,17 @@ function App() {
             <Route path="/choose-room" element={<ChooseRoom Link={Link} />} />
             <Route
                 path="/analyse-room"
-                element={<AnalyseRoom setIsOpen={setIsOpen} isOpen={isOpen} closeModal={closeModal} />}
+                element={
+                    <AnalyseRoom
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        isPcAnalyse={isPcAnalyse}
+                        setIsPcAnalyse={setIsPcAnalyse}
+                        isAffiche={isAffiche}
+                        setIsAffiche={setIsAffiche}
+                    />
+                }
             />
             <Route
                 path="/research-room"
@@ -40,7 +72,17 @@ function App() {
             />
             <Route
                 path="/reserve-room"
-                element={<ReserveRoom setIsOpen={setIsOpen} isOpen={isOpen} closeModal={closeModal} />}
+                element={
+                    <ReserveRoom
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        isBoite={isBoite}
+                        setIsBoite={setIsBoite}
+                        isEtagere={isEtagere}
+                        setIsEtagere={setIsEtagere}
+                    />
+                }
             />
             <Route
                 path="/archieve-room"

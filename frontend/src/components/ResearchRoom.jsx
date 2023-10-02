@@ -5,6 +5,12 @@ import '../style/room.css'
 import Form from './Form'
 import Timer from './timer'
 
+/*Imports images cote bureau*/
+/*
+import docCensure from '../images/document_censure_1.png'
+import papierMdp from '../images/papier_mdp_1399_p1.png'
+*/
+
 function ResearchRoom({ isOpen, setIsOpen, closeModal }) {
     const makeRemedy = () => {
         setIsOpen(true)
@@ -26,7 +32,7 @@ function ResearchRoom({ isOpen, setIsOpen, closeModal }) {
         <>
             <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} onMapClick={makeRemedy} />
             <h2 id="room-title">Salle de recherches</h2>
-            <Timer style={{} } />
+            <Timer style={{}} />
             {isOpen ? <ModalWindow content={<Form />} isOpen={isOpen} closeModal={closeModal} /> : ''}
         </>
     )

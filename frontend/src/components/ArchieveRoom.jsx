@@ -3,6 +3,21 @@ import { ImageMap } from '@qiuz/react-image-map'
 import '../style/room.css'
 import ModalWindow from './ModalWindow'
 
+/*Imports images classeur blanc*/
+/*
+import mdpP2 from '../images/mdp_p2.png'
+import mdpDate from '../images/mdp_280923.png'
+*/
+
+/*Imports images casier noir*/
+/*
+import doc2 from '../images/document_2.png'
+import doc3 from '../images/document_3.png'
+import doc4 from '../images/document_4.png'
+import doc5 from '../images/document_5_Capsanil.png'
+import doc6 from '../images/document_6.png'
+*/
+
 function ArchieveRoom({ setIsOpen, isOpen, closeModal, isClasseur, setIsClasseur, isCommode, setIsCommode }) {
     const mapArea = [
         {
@@ -36,9 +51,22 @@ function ArchieveRoom({ setIsOpen, isOpen, closeModal, isClasseur, setIsClasseur
         }
     }
 
-    const classeur = <h1>classeur</h1>
+    /*const commode = (
+        <div>
+            <img src={doc2}></img>
+            <img src={doc3}></img>
+            <img src={doc4}></img>
+            <img src={doc5}></img>
+            <img src={doc6}></img>
+        </div>
+    )*/
 
-    const commode = <h1>commode</h1>
+    /*const classeur = (
+        <div>
+            <img src={mdpP2}></img>
+            <img src={mdpDate}></img>
+        </div>
+    )*/
 
     return (
         <div>

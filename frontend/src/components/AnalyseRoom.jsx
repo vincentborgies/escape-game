@@ -2,17 +2,35 @@ import AnalyseRoomImage from '../images/salle-analyse.png'
 import { ImageMap } from '@qiuz/react-image-map'
 import ModalWindow from './ModalWindow'
 import '../style/room.css'
+import carnetOrdre from '../images/carnet_ordre.png'
+import postItAnalyse from '../images/post_it_3007.png'
 
-function AnalyseRoom({ isOpen, setIsOpen, closeModal }) {
-    const whiteComputer = [
-        { width: '10.186199342825848%', height: '10.9375%', left: '72.17449342825847%', top: '49.4140625%' }
+function AnalyseRoom({ isOpen, setIsOpen, closeModal, isPcAnalyse, setIsPcAnalyse, isAffiche, setIsAffiche }) {
+    const mapArea = [
+        /*PC ecran blanc*/
+        { width: '10.186199342825848%', height: '10.9375%', left: '72.17449342825847%', top: '49.4140625%' },
+        /*Affiches sur mur*/
+        {
+            width: '23.484848484848484%',
+            height: '18.91891891891892%',
+            left: '61.89157196969697%',
+            top: '29.18918918918919%'
+        }
     ]
 
-    const onMapClick = () => {
+    const onMapClick = (area, index) => {
         setIsOpen(true)
+        if (index === 0) {
+            setIsPcAnalyse(true)
+            setIsOpen(true)
+        }
+        if (index === 1) {
+            setIsAffiche(true)
+            setIsOpen(true)
+        }
     }
 
-    const content = (
+    const pcContent = (
         <div>
             <h1>Notes de recherches</h1>
             <h2>[Jour 1]</h2>
@@ -52,11 +70,20 @@ function AnalyseRoom({ isOpen, setIsOpen, closeModal }) {
         </div>
     )
 
+    const affichesContent = (
+        <div>
+            <img src={carnetOrdre}></img><img src={postItAnalyse}></img>
+        </div>
+    )
+
     return (
         <div>
-            <ImageMap className="usage-map" src={AnalyseRoomImage} map={whiteComputer} onMapClick={onMapClick} />
+            <ImageMap className="usage-map" src={AnalyseRoomImage} map={mapArea} onMapClick={onMapClick} />
             <h2 id="room-title">Salle d'analyses</h2>
-            {isOpen ? <ModalWindow content={content} isOpen={isOpen} closeModal={closeModal} /> : ''}
+            {(isOpen && isPcAnalyse && <ModalWindow content={pcContent} isOpen={isOpen} closeModal={closeModal} />) ||
+                (isOpen && isAffiche && (
+                    <ModalWindow content={affichesContent} isOpen={isOpen} closeModal={closeModal} />
+                ))}
         </div>
     )
 }

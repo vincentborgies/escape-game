@@ -41,7 +41,19 @@ const Timer = () => {
     }, [time])
 
     return (
-        <div style={{ fontFamily: 'Digital', color: 'blue', backgroundColor: 'transparent', position: 'absolute' }}>
+        <div
+            style={{
+                fontFamily: 'Digital',
+                color: 'white',
+                backgroundColor: 'transparent',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                marginTop: 20,
+                fontSize: 50,
+                marginLeft: 10
+            }}
+        >
             {String(time.hours).padStart(2, '0')} : {String(time.minutes).padStart(2, '0')} :{' '}
             {String(time.seconds).padStart(2, '0')}
         </div>
