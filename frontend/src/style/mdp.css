@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=VT323&display=swap');
+
+.container-mdp {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    background-color: #018281;
+    color: white;
+    border-radius: 10px;
+}
+
+.container-mdp .form-mdp {
+    font-size: 40px;
+    font-family: 'VT323', monospace;
+}
+
+.container-mdp .form-mdp input {
+    font-size: 25px;
+    width: 200px;
+}
+
+.container-mdp .form-mdp .button-mdp {
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+    border-width: 1px;
+    border-color: #ffffff #808080 #808080;
+    padding: 3px;
+}
+
+.container-mdp .form-mdp .button-mdp:hover {
+    background-color: black;
+    color: red;
+    font-size: 40px;
+    font-weight: 00;
+    border-color: red;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../style/mdp.css'
 
 function RequirePassword({ setRequirePassword, password }) {
     const [inputPassword, setInputPassword] = useState('')
@@ -23,12 +24,15 @@ function RequirePassword({ setRequirePassword, password }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="">Mot de passe : </label>
-            <input type="text" value={inputPassword} onChange={handleChange} />
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            <button type="submit">Entrez</button>
-        </form>
+        <div className="container-mdp">
+            <form className="form-mdp" onSubmit={handleSubmit}>
+                <label htmlFor="">Mot de passe </label>
+                <input type="text" value={inputPassword} onChange={handleChange} />
+                <button className="button-mdp" type="submit">Entrez</button>
+                {error && <div style={{ color: 'red' }}>{error}</div>}
+                
+            </form>
+        </div>
     )
 }
 

@@ -121,7 +121,7 @@ function ResearchRoom({
     return (
         <>
             <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} onMapClick={onMapClick} />
-            <h2 id="room-title">Salle de recherches</h2>
+            {!isOpen && <h2 id="room-title">Salle de recherches</h2>}
             <Timer />
             {(isOpen && isRemede && (
                 <ModalWindow

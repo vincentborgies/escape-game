@@ -87,47 +87,42 @@ function Form() {
             <fieldset className="container">
                 <div className="form-group">
                     <legend>Entrez le premier ingrédient</legend>
-                    <label htmlFor="ing1">Nom</label>
                     <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="qtyIng1">Quantité</label>
-                    <input type="number" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
+                    <input type="text" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                <legend>Entrez le deuxième ingrédient</legend>
-                    <label htmlFor="ing2">Nom</label>
-                    
+                    <legend>Entrez le deuxième ingrédient</legend>
+
                     <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="qtyIng2">Quantité</label>
-                    <input type="number" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
+                    <input type="text" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                <legend>Entrez le troisième ingrédient</legend>
-                    <label htmlFor="ing3">Nom</label>
+                    <legend>Entrez le troisième ingrédient</legend>
                     <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="qtyIng3">Quantité</label>
-                    <input type="number" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
+                    <input type="text" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
                 </div>
             </fieldset>
             <fieldset>
-               
                 <div className="form-group">
-                <legend>Entrez le quatrième ingrédient</legend>
-                    <label htmlFor="ing4">Nom</label>
+                    <legend>Entrez le quatrième ingrédient</legend>
                     <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="qtyIng4">Quantité</label>
-                    <input type="number" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
+                    <input type="text" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
                 </div>
             </fieldset>
             <div className="btn">

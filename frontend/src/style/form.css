@@ -1,4 +1,4 @@
-@import url('https://fonts.google.com/specimen/Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 /* CSS for the ingredient form */
 .ingredient-form {
@@ -6,11 +6,11 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #8594e4;
+    background-color: black;
     display: flex;
     flex-direction: row;
-    
-
+    font-family: 'Source Code Pro', monospace;
+    color: #11d70d;
 }
 
 .ingredient-form:hover {
@@ -22,7 +22,7 @@
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: black;
 }
 
 .ingredient-form legend {
@@ -46,6 +46,10 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    background-color: black;
+    color: #11d70d;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .ingredient-form .btn {
@@ -70,6 +74,7 @@
 
 /* Style for the submit button on hover */
 .ingredient-form .submit-button:hover {
+    color: #070707;
     background-color: rgb(35, 187, 58);
 }
 
@@ -79,4 +84,24 @@
         display: flex;
         flex-direction: column;
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

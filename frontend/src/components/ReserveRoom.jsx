@@ -65,7 +65,7 @@ function ReserveRoom({
     return (
         <div>
             <ImageMap className="usage-map" src={ReserveImage} map={mapArea} onMapClick={onMapClick} />
-            <h2 id="room-title">Salle de reserve</h2>
+            {!isOpen && <h2 id="room-title">Salle de reserve</h2>}
             {(isOpen && isBoite && (
                 <ModalWindow
                     content={boite}

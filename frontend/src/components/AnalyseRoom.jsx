@@ -48,7 +48,7 @@ function AnalyseRoom({
     }
 
     const pcContent = (
-        <div>
+        <div className="note">
             <h1>Notes de recherches</h1>
             <h2>[Jour 1]</h2>
             <p>
@@ -97,7 +97,7 @@ function AnalyseRoom({
     return (
         <div>
             <ImageMap className="usage-map" src={AnalyseRoomImage} map={mapArea} onMapClick={onMapClick} />
-            <h2 id="room-title">Salle d'analyses</h2>
+            {!isOpen && <h2 id="room-title">Salle d'analyses</h2>}
             {(isOpen && isPcAnalyse && (
                 <ModalWindow
                     content={pcContent}

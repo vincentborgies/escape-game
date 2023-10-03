@@ -86,7 +86,7 @@ function ArchieveRoom({
                 map={mapArea}
                 onMapClick={onMapClick}
             />
-            <h2 id="room-title">Salle d'archives</h2>
+            {!isOpen && <h2 id="room-title">Salle d'archives</h2>}
             {(isOpen && isClasseur && (
                 <ModalWindow
                     content={classeur}
