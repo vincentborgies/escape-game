@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import solution from '../secret/solution'
 import '../style/form.css'
+import Success from './Success'
 
 function Form() {
     // Déclaration et initialisation de l'état local pour les noms et quantités des ingrédients saisis
+    const [success, setSuccess] = useState(false)
+    const [displaySuccess, setDisplaySuccess] = useState(false)
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false)
+
     const [ing1Name, setIng1Name] = useState('')
     const [ing2Name, setIng2Name] = useState('')
     const [ing3Name, setIng3Name] = useState('')
@@ -79,56 +84,70 @@ function Form() {
 
         // Vérification si toutes les correspondances sont vraies
 
-        correspondances.every(Boolean) ? alert(`mission réussie, l'antidote a été crée`) : alert(`tentative echouée`)
+        correspondances.every(Boolean) ? alert('mission réussie !') : alert('mauvaise combinaison, veuillez réessayer')
+
+        /*correspondances.every(Boolean) && setSuccess(true)
+        setDisplaySuccess(true)
+        setIsOpenSuccess(true)*/
     }
 
     return (
-        <form onSubmit={handleSubmit} className="ingredient-form">
-            <fieldset className="container">
-                <div className="form-group">
-                    <legend>Entrez le premier ingrédient</legend>
-                    <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="qtyIng1">Quantité</label>
-                    <input type="text" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <legend>Entrez le deuxième ingrédient</legend>
+        <>
+            {displaySuccess && (
+                <Success
+                    success={success}
+                    isOpenSuccess={isOpenSuccess}
+                    displaySuccess={displaySuccess}
+                    setOpenSuccess={setIsOpenSuccess}
+                />
+            )}
+            <form onSubmit={handleSubmit} className="ingredient-form">
+                <fieldset className="container">
+                    <div className="form-group">
+                        <legend>Entrez le premier ingrédient</legend>
+                        <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="qtyIng1">Quantité</label>
+                        <input type="text" name="qtyIng1" value={ing1Qty} required onChange={handleChangeQty1} />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <legend>Entrez le deuxième ingrédient</legend>
 
-                    <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
+                        <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="qtyIng2">Quantité</label>
+                        <input type="text" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <legend>Entrez le troisième ingrédient</legend>
+                        <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="qtyIng3">Quantité</label>
+                        <input type="text" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <legend>Entrez le quatrième ingrédient</legend>
+                        <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="qtyIng4">Quantité</label>
+                        <input type="text" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
+                    </div>
+                </fieldset>
+                <div className="btn">
+                    <input type="submit" value="Fabrication du remède" className="submit-button" />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="qtyIng2">Quantité</label>
-                    <input type="text" name="qtyIng2" value={ing2Qty} required onChange={handleChangeQty2} />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <legend>Entrez le troisième ingrédient</legend>
-                    <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="qtyIng3">Quantité</label>
-                    <input type="text" name="qtyIng3" value={ing3Qty} required onChange={handleChangeQty3} />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <legend>Entrez le quatrième ingrédient</legend>
-                    <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="qtyIng4">Quantité</label>
-                    <input type="text" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
-                </div>
-            </fieldset>
-            <div className="btn">
-                <input type="submit" value="Fabrication du remède" className="submit-button" />
-            </div>
-        </form>
+            </form>
+        </>
     )
 }
 

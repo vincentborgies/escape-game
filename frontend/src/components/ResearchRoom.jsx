@@ -116,7 +116,7 @@ function ResearchRoom({
         </div>
     )
 
-    const remede = <Form />
+    const remede = <Form/>
 
     return (
         <>

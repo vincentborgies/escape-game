@@ -2,17 +2,23 @@ import { useState, useEffect } from 'react'
 import '../style/room.css'
 
 const Timer = () => {
-    const [time, setTime] = useState({
+    const initialTime = {
         hours: 1,
         minutes: 0,
         seconds: 0
-    })
+    }
+
+    // Vérifier s'il y a une valeur précédemment enregistrée dans le stockage local
+    const savedTime = JSON.parse(localStorage.getItem('timer')) || initialTime
+
+    const [time, setTime] = useState(savedTime)
 
     useEffect(() => {
         const interval = setInterval(() => {
             if (time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
                 clearInterval(interval)
-                // Le compte à rebours est terminé, vous pouvez ajouter une action à exécuter ici.
+                // Le compte à rebours est terminé, affichez une alerte "game over".
+                alert('Game Over')
             } else {
                 setTime((prevTime) => {
                     let hours = prevTime.hours
@@ -32,6 +38,9 @@ const Timer = () => {
                         seconds--
                     }
 
+                    // Enregistrez le temps actuel dans le stockage local
+                    localStorage.setItem('timer', JSON.stringify({ hours, minutes, seconds }))
+
                     return { hours, minutes, seconds }
                 })
             }
@@ -43,7 +52,7 @@ const Timer = () => {
     return (
         <div
             style={{
-                fontFamily: 'Digital',
+                fontFamily: 'Arial',
                 color: 'white',
                 backgroundColor: 'transparent',
                 position: 'absolute',

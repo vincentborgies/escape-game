@@ -1,13 +1,38 @@
 import Modal from 'react-modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import RequirePassword from './requirePassword'
 
-function ModalWindow({ content, isOpen, closeModal, requirePassword, setRequirePassword, password }) {
+function Success({ success, timerIsOver, isOpenSuccess, setIsOpenSuccess, displaySuccess }) {
+    const congratulations = (
+        <div>
+            <iframe
+                src="https://giphy.com/embed/IwAZ6dvvvaTtdI8SD5"
+                width="480"
+                height="400"
+                frameBorder="0"
+                className="giphy-embed"
+                allowFullScreen
+            ></iframe>
+        </div>
+    )
+
+    const fail = (
+        <img
+            id="playOnce"
+            src="https://media.giphy.com/media/l0ErQ2UfBNFEIlqjC/giphy.gif"
+            style={{ animationIterationCount: 1, animationDuration: '1.5s' }}
+        />
+    )
+
+    const close = () => {
+        setIsOpenSuccess(false)
+        displaySuccess(false)
+    }
+
     return (
         <Modal
-            isOpen={isOpen}
-            onRequestClose={closeModal}
+            isOpen={isOpenSuccess}
+            onRequestClose={close}
             style={{
                 overlay: {
                     backgroundColor: 'rgba(0, 0, 0, 0.5)' // Fond de l'arrière-plan de la modal (transparent)
@@ -27,18 +52,14 @@ function ModalWindow({ content, isOpen, closeModal, requirePassword, setRequireP
                     fontSize: '20px',
                     fontWeight: '600'
                 }}
-                onClick={closeModal}
+                onClick={close}
             >
                 <FontAwesomeIcon icon={faXmark} beatFade style={{ justifyContent: 'flex-end' }} />
                 <span style={{ fontSize: '20px', fontWeight: '600', paddingLeft: '5px' }}>fermer</span>
             </div>
-            {requirePassword ? (
-                <RequirePassword setRequirePassword={setRequirePassword} password={password} />
-            ) : (
-                content
-            )}
+            {success ? congratulations : fail}
         </Modal>
     )
 }
 
-export default ModalWindow
+export default Success
