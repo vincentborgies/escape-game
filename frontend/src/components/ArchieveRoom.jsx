@@ -53,6 +53,7 @@ function ArchieveRoom({
         }
         if (index === 1) {
             setIsCommode(true)
+            setRequirePassword(true)
             setIsOpen(true)
             console.log(`commode : ${isCommode}`)
             console.log(`commode : ${isCommode}`)

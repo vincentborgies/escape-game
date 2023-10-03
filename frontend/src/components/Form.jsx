@@ -97,8 +97,9 @@ function Form() {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <legend>Entrez le deuxième ingrédient</legend>
+                <legend>Entrez le deuxième ingrédient</legend>
                     <label htmlFor="ing2">Nom</label>
+                    
                     <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
                 </div>
                 <div className="form-group">
@@ -118,8 +119,9 @@ function Form() {
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Entrez le quatrième ingrédient</legend>
+               
                 <div className="form-group">
+                <legend>Entrez le quatrième ingrédient</legend>
                     <label htmlFor="ing4">Nom</label>
                     <input type="text" name="ing4" value={ing4Name} required onChange={handleChangeName4} />
                 </div>

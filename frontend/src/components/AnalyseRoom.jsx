@@ -38,8 +38,8 @@ function AnalyseRoom({
         setIsOpen(true)
         if (index === 0) {
             setIsPcAnalyse(true)
-            setIsOpen(true)
             setRequirePassword(true)
+            setIsOpen(true)
         }
         if (index === 1) {
             setIsAffiche(true)

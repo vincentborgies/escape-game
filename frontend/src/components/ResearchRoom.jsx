@@ -54,6 +54,7 @@ function ResearchRoom({
         }
         if (index === 1) {
             setIsPcResearch(true)
+            setRequirePassword(true)
             setIsOpen(true)
         }
         if (index === 2) {

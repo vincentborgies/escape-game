@@ -40,6 +40,7 @@ function ReserveRoom({
     const onMapClick = (area, index) => {
         if (index === 0) {
             setIsBoite(true)
+            setRequirePassword(true)
             setIsOpen(true)
         }
         if (index === 1) {
