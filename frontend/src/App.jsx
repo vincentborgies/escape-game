@@ -19,10 +19,15 @@ function App() {
     const [isAffiche, setIsAffiche] = useState(false)
 
     //activité des éléments cliquables de la salle de recherches
+    const [isRemede, setIsRemede] = useState(false)
+    const [isPcResearch, setIsPcResearch] = useState(false)
+    const [isCotePc, setIsCotePc] = useState(false)
 
     //activités des éléments cliquables de la salle de reserve
     const [isBoite, setIsBoite] = useState(false)
     const [isEtagere, setIsEtagere] = useState(false)
+
+    const [requirePassword, setRequirePassword] = useState(false)
 
     const navigate = useNavigate()
 
@@ -30,21 +35,34 @@ function App() {
         setIsOpen(false)
         if (isCommode) {
             setIsCommode(false)
+            setRequirePassword(false)
         }
         if (isClasseur) {
             setIsClasseur(false)
         }
         if (isBoite) {
             setIsBoite(false)
+            setRequirePassword(false)
         }
         if (isEtagere) {
             setIsEtagere(false)
         }
         if (isPcAnalyse) {
             setIsPcAnalyse(false)
+            setRequirePassword(false)
         }
         if (isAffiche) {
             setIsAffiche(false)
+        }
+        if (isPcResearch) {
+            setIsPcResearch(false)
+            setRequirePassword(false)
+        }
+        if (isRemede) {
+            setIsRemede(false)
+        }
+        if (isCotePc) {
+            setIsCotePc(false)
         }
     }
 
@@ -63,12 +81,28 @@ function App() {
                         setIsPcAnalyse={setIsPcAnalyse}
                         isAffiche={isAffiche}
                         setIsAffiche={setIsAffiche}
+                        requirePassword={requirePassword}
+                        setRequirePassword={setRequirePassword}
                     />
                 }
             />
             <Route
                 path="/research-room"
-                element={<ResearchRoom setIsOpen={setIsOpen} isOpen={isOpen} closeModal={closeModal} />}
+                element={
+                    <ResearchRoom
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        isRemede={isRemede}
+                        setIsRemede={setIsRemede}
+                        isPcResearch={isPcResearch}
+                        setIsPcResearch={setIsPcResearch}
+                        isCotePc={isCotePc}
+                        setIsCotePc={setIsCotePc}
+                        requirePassword={requirePassword}
+                        setRequirePassword={setRequirePassword}
+                    />
+                }
             />
             <Route
                 path="/reserve-room"
@@ -81,6 +115,8 @@ function App() {
                         setIsBoite={setIsBoite}
                         isEtagere={isEtagere}
                         setIsEtagere={setIsEtagere}
+                        requirePassword={requirePassword}
+                        setRequirePassword={setRequirePassword}
                     />
                 }
             />
@@ -95,6 +131,8 @@ function App() {
                         setIsClasseur={setIsClasseur}
                         isCommode={setIsCommode}
                         setIsCommode={setIsCommode}
+                        requirePassword={requirePassword}
+                        setRequirePassword={setRequirePassword}
                     />
                 }
             />

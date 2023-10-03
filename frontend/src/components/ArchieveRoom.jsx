@@ -2,23 +2,31 @@ import ArchieveRoomImage from '../images/salle-archives.png'
 import { ImageMap } from '@qiuz/react-image-map'
 import '../style/room.css'
 import ModalWindow from './ModalWindow'
+import solution from '../secret/solution'
 
 /*Imports images classeur blanc*/
-/*
+
 import mdpP2 from '../images/mdp_p2.png'
 import mdpDate from '../images/mdp_280923.png'
-*/
 
 /*Imports images casier noir*/
-/*
 import doc2 from '../images/document_2.png'
 import doc3 from '../images/document_3.png'
 import doc4 from '../images/document_4.png'
 import doc5 from '../images/document_5_Capsanil.png'
 import doc6 from '../images/document_6.png'
-*/
 
-function ArchieveRoom({ setIsOpen, isOpen, closeModal, isClasseur, setIsClasseur, isCommode, setIsCommode }) {
+function ArchieveRoom({
+    setIsOpen,
+    isOpen,
+    closeModal,
+    isClasseur,
+    setIsClasseur,
+    isCommode,
+    setIsCommode,
+    requirePassword,
+    setRequirePassword
+}) {
     const mapArea = [
         {
             /*Classeur blanc*/
@@ -51,22 +59,22 @@ function ArchieveRoom({ setIsOpen, isOpen, closeModal, isClasseur, setIsClasseur
         }
     }
 
-    /*const commode = (
+    const commode = (
         <div>
-            <img src={doc2}></img>
-            <img src={doc3}></img>
-            <img src={doc4}></img>
-            <img src={doc5}></img>
-            <img src={doc6}></img>
+            <img src={doc2} style={{ width: '50%' }}></img>
+            <img src={doc3} style={{ width: '50%' }}></img>
+            <img src={doc4} style={{ width: '50%' }}></img>
+            <img src={doc5} style={{ width: '50%' }}></img>
+            <img src={doc6} style={{ width: '50%' }}></img>
         </div>
-    )*/
+    )
 
-    /*const classeur = (
+    const classeur = (
         <div>
-            <img src={mdpP2}></img>
-            <img src={mdpDate}></img>
+            <img src={mdpP2} style={{ width: '50%' }}></img>
+            <img src={mdpDate} style={{ width: '50%' }}></img>
         </div>
-    )*/
+    )
 
     return (
         <div>
@@ -78,8 +86,24 @@ function ArchieveRoom({ setIsOpen, isOpen, closeModal, isClasseur, setIsClasseur
                 onMapClick={onMapClick}
             />
             <h2 id="room-title">Salle d'archives</h2>
-            {(isOpen && isClasseur && <ModalWindow content={classeur} isOpen={isOpen} closeModal={closeModal} />) ||
-                (isOpen && isCommode && <ModalWindow content={commode} isOpen={isOpen} closeModal={closeModal} />)}
+            {(isOpen && isClasseur && (
+                <ModalWindow
+                    content={classeur}
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                    requirePassword={requirePassword}
+                />
+            )) ||
+                (isOpen && isCommode && (
+                    <ModalWindow
+                        content={commode}
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        requirePassword={requirePassword}
+                        setRequirePassword={setRequirePassword}
+                        password={solution.passwordCasierArchives}
+                    />
+                ))}
         </div>
     )
 }

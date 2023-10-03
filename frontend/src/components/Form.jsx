@@ -84,9 +84,9 @@ function Form() {
 
     return (
         <form onSubmit={handleSubmit} className="ingredient-form">
-            <fieldset>
-                <legend>Entrez le premier ingrédient</legend>
+            <fieldset className="container">
                 <div className="form-group">
+                    <legend>Entrez le premier ingrédient</legend>
                     <label htmlFor="ing1">Nom</label>
                     <input type="text" name="ing1" value={ing1Name} required onChange={handleChangeName1} />
                 </div>
@@ -96,8 +96,8 @@ function Form() {
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Entrez le deuxième ingrédient</legend>
                 <div className="form-group">
+                    <legend>Entrez le deuxième ingrédient</legend>
                     <label htmlFor="ing2">Nom</label>
                     <input type="text" name="ing2" value={ing2Name} required onChange={handleChangeName2} />
                 </div>
@@ -107,8 +107,8 @@ function Form() {
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Entrez le troisième ingrédient</legend>
                 <div className="form-group">
+                <legend>Entrez le troisième ingrédient</legend>
                     <label htmlFor="ing3">Nom</label>
                     <input type="text" name="ing3" value={ing3Name} required onChange={handleChangeName3} />
                 </div>
@@ -128,8 +128,8 @@ function Form() {
                     <input type="number" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
                 </div>
             </fieldset>
-            <div className="btn" >
-            <input type="submit" value="Fabrication du remède" className="submit-button" />
+            <div className="btn">
+                <input type="submit" value="Fabrication du remède" className="submit-button" />
             </div>
         </form>
     )

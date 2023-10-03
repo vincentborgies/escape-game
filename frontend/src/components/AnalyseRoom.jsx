@@ -4,11 +4,27 @@ import ModalWindow from './ModalWindow'
 import '../style/room.css'
 import carnetOrdre from '../images/carnet_ordre.png'
 import postItAnalyse from '../images/post_it_3007.png'
+import solution from '../secret/solution'
 
-function AnalyseRoom({ isOpen, setIsOpen, closeModal, isPcAnalyse, setIsPcAnalyse, isAffiche, setIsAffiche }) {
+function AnalyseRoom({
+    isOpen,
+    setIsOpen,
+    closeModal,
+    isPcAnalyse,
+    setIsPcAnalyse,
+    isAffiche,
+    setIsAffiche,
+    requirePassword,
+    setRequirePassword
+}) {
     const mapArea = [
         /*PC ecran blanc*/
-        { width: '10.186199342825848%', height: '10.9375%', left: '72.17449342825847%', top: '49.4140625%' },
+        {
+            width: '10.186199342825848%',
+            height: '10.9375%',
+            left: '72.17449342825847%',
+            top: '49.4140625%'
+        },
         /*Affiches sur mur*/
         {
             width: '23.484848484848484%',
@@ -23,6 +39,7 @@ function AnalyseRoom({ isOpen, setIsOpen, closeModal, isPcAnalyse, setIsPcAnalys
         if (index === 0) {
             setIsPcAnalyse(true)
             setIsOpen(true)
+            setRequirePassword(true)
         }
         if (index === 1) {
             setIsAffiche(true)
@@ -71,8 +88,9 @@ function AnalyseRoom({ isOpen, setIsOpen, closeModal, isPcAnalyse, setIsPcAnalys
     )
 
     const affichesContent = (
-        <div>
-            <img src={carnetOrdre}></img><img src={postItAnalyse}></img>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <img src={carnetOrdre}></img>
+            <img src={postItAnalyse}></img>
         </div>
     )
 
@@ -80,9 +98,23 @@ function AnalyseRoom({ isOpen, setIsOpen, closeModal, isPcAnalyse, setIsPcAnalys
         <div>
             <ImageMap className="usage-map" src={AnalyseRoomImage} map={mapArea} onMapClick={onMapClick} />
             <h2 id="room-title">Salle d'analyses</h2>
-            {(isOpen && isPcAnalyse && <ModalWindow content={pcContent} isOpen={isOpen} closeModal={closeModal} />) ||
+            {(isOpen && isPcAnalyse && (
+                <ModalWindow
+                    content={pcContent}
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                    requirePassword={requirePassword}
+                    setRequirePassword={setRequirePassword}
+                    password={solution.passwordPcAnalyse}
+                />
+            )) ||
                 (isOpen && isAffiche && (
-                    <ModalWindow content={affichesContent} isOpen={isOpen} closeModal={closeModal} />
+                    <ModalWindow
+                        content={affichesContent}
+                        isOpen={isOpen}
+                        closeModal={closeModal}
+                        requirePassword={requirePassword}
+                    />
                 ))}
         </div>
     )
