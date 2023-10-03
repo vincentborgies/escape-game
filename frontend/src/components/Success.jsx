@@ -1,37 +1,56 @@
 import Modal from 'react-modal'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import '../style/messages.css'
+import { useNavigate } from 'react-router-dom'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
-function Success({ success, timerIsOver, isOpenSuccess, setIsOpenSuccess, displaySuccess }) {
+function Success({ success, isOpenSuccess, setIsOpenSuccess, gameOver, setIsOpen }) {
+    const { width, height } = useWindowSize()
+    const navigate = useNavigate()
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        setIsOpenSuccess(false)
+        setIsOpen(false)
+        navigate('/')
+    }
+
     const congratulations = (
-        <div>
-            <iframe
-                src="https://giphy.com/embed/IwAZ6dvvvaTtdI8SD5"
-                width="480"
-                height="400"
-                frameBorder="0"
-                className="giphy-embed"
-                allowFullScreen
-            ></iframe>
+        <div className="containerMessage">
+            <Confetti width={width} height={height} />
+            <p className="congratzFin">Félicitations</p>
+            <button role="button" className="button-82-pushable" onClick={handleClick}>
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">Retourner à l'accueil</span>
+            </button>
         </div>
     )
 
-    const fail = (
-        <img
-            id="playOnce"
-            src="https://media.giphy.com/media/l0ErQ2UfBNFEIlqjC/giphy.gif"
-            style={{ animationIterationCount: 1, animationDuration: '1.5s' }}
-        />
+    const gameOverScreen = (
+        <div className="containerMessage">
+            <p className="GameOver">Game Over</p>
+            <button role="button" className="button-2-pushable" onClick={handleClick}>
+                <span className="button-2-shadow"></span>
+                <span className="button-2-edge"></span>
+                <span className="button-2-front text">Retourner à l'accueil</span>
+            </button>
+        </div>
     )
 
-    const close = () => {
-        setIsOpenSuccess(false)
-        displaySuccess(false)
+    const Content = () => {
+        if (success) {
+            return congratulations
+        }
+        if (gameOver) {
+            return gameOverScreen
+        }
     }
 
     return (
         <Modal
             isOpen={isOpenSuccess}
+            ariaHideApp={false}
             onRequestClose={close}
             style={{
                 overlay: {
@@ -43,21 +62,7 @@ function Success({ success, timerIsOver, isOpenSuccess, setIsOpenSuccess, displa
                 }
             }}
         >
-            <div
-                style={{
-                    display: 'flex',
-                    width: '100%',
-                    color: '#fb0e0e',
-                    cursor: 'pointer',
-                    fontSize: '20px',
-                    fontWeight: '600'
-                }}
-                onClick={close}
-            >
-                <FontAwesomeIcon icon={faXmark} beatFade style={{ justifyContent: 'flex-end' }} />
-                <span style={{ fontSize: '20px', fontWeight: '600', paddingLeft: '5px' }}>fermer</span>
-            </div>
-            {success ? congratulations : fail}
+            {<Content />}
         </Modal>
     )
 }

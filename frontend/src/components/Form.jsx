@@ -3,11 +3,10 @@ import solution from '../secret/solution'
 import '../style/form.css'
 import Success from './Success'
 
-function Form() {
+function Form({ setIsOpenSuccess, isOpenSuccess, setIsOpen}) {
     // Déclaration et initialisation de l'état local pour les noms et quantités des ingrédients saisis
     const [success, setSuccess] = useState(false)
-    const [displaySuccess, setDisplaySuccess] = useState(false)
-    const [isOpenSuccess, setIsOpenSuccess] = useState(false)
+    const [error, setError] = useState('')
 
     const [ing1Name, setIng1Name] = useState('')
     const [ing2Name, setIng2Name] = useState('')
@@ -21,34 +20,42 @@ function Form() {
     // On met à jour les états des noms et quantités des ingrédients saisis par le joueur
 
     const handleChangeName1 = (e) => {
+        setError('')
         setIng1Name(e.target.value)
     }
 
     const handleChangeName2 = (e) => {
+        setError('')
         setIng2Name(e.target.value)
     }
 
     const handleChangeName3 = (e) => {
+        setError('')
         setIng3Name(e.target.value)
     }
 
     const handleChangeName4 = (e) => {
+        setError('')
         setIng4Name(e.target.value)
     }
 
     const handleChangeQty1 = (e) => {
+        setError('')
         setIng1Qty(Number(e.target.value))
     }
 
     const handleChangeQty2 = (e) => {
+        setError('')
         setIng2Qty(Number(e.target.value))
     }
 
     const handleChangeQty3 = (e) => {
+        setError('')
         setIng3Qty(Number(e.target.value))
     }
 
     const handleChangeQty4 = (e) => {
+        setError('')
         setIng4Qty(Number(e.target.value))
     }
 
@@ -75,7 +82,14 @@ function Form() {
     const request = [ing1, ing2, ing3, ing4]
 
     // à l'envoi du formulaire on execute :
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const onSuccess = () => {
+            setSuccess(true)
+            setIsOpenSuccess(true)
+        }
+
         // Comparaison des ingrédients saisis avec ceux de la solution
         const correspondances = request.map((ing, index) => {
             // Utilisation de JSON.stringify pour comparer les objets
@@ -84,7 +98,7 @@ function Form() {
 
         // Vérification si toutes les correspondances sont vraies
 
-        correspondances.every(Boolean) ? alert('mission réussie !') : alert('mauvaise combinaison, veuillez réessayer')
+        correspondances.every(Boolean) ? onSuccess() : setError('Mauvaise combinaison, veuillez réessayer')
 
         /*correspondances.every(Boolean) && setSuccess(true)
         setDisplaySuccess(true)
@@ -93,14 +107,7 @@ function Form() {
 
     return (
         <>
-            {displaySuccess && (
-                <Success
-                    success={success}
-                    isOpenSuccess={isOpenSuccess}
-                    displaySuccess={displaySuccess}
-                    setOpenSuccess={setIsOpenSuccess}
-                />
-            )}
+            {success && <Success success={success} isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} setIsOpen={setIsOpen} />}
             <form onSubmit={handleSubmit} className="ingredient-form">
                 <fieldset className="container">
                     <div className="form-group">
@@ -143,8 +150,9 @@ function Form() {
                         <input type="text" name="qtyIng4" value={ing4Qty} required onChange={handleChangeQty4} />
                     </div>
                 </fieldset>
-                <div className="btn">
+                <div className="btn" style={{ display: 'flex', flexDirection: 'column' }}>
                     <input type="submit" value="Fabrication du remède" className="submit-button" />
+                    <div style={{ color: 'red' }}>{error}</div>
                 </div>
             </form>
         </>

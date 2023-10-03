@@ -6,6 +6,7 @@ import RequirePassword from './requirePassword'
 function ModalWindow({ content, isOpen, closeModal, requirePassword, setRequirePassword, password }) {
     return (
         <Modal
+            ariaHideApp={false}
             isOpen={isOpen}
             onRequestClose={closeModal}
             style={{

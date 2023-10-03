@@ -4,7 +4,9 @@ import { ImageMap } from '@qiuz/react-image-map'
 import '../style/room.css'
 import Form from './Form'
 import Timer from './timer'
+import Success from './Success'
 import solution from '../secret/solution'
+import { useState } from 'react'
 
 /*Imports images cote bureau*/
 import docCensure from '../images/document_censure_1.png'
@@ -23,6 +25,9 @@ function ResearchRoom({
     requirePassword,
     setRequirePassword
 }) {
+    const [gameOver, setGameOver] = useState(false)
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false)
+
     const mapArea = [
         //coordonnées de l'endroit pour fabriquer le remède
         {
@@ -116,13 +121,16 @@ function ResearchRoom({
         </div>
     )
 
-    const remede = <Form/>
+    const remede = <Form setIsOpenSuccess={setIsOpenSuccess} isOpenSuccess={isOpenSuccess} setIsOpen={setIsOpen} />
 
     return (
         <>
             <ImageMap className="usage-map" src={ResearchRoomImage} map={mapArea} onMapClick={onMapClick} />
             {!isOpen && <h2 id="room-title">Salle de recherches</h2>}
-            <Timer />
+            <Timer setGameOver={setGameOver} setIsOpenSuccess={setIsOpenSuccess} />
+            {gameOver && (
+                <Success gameOver={gameOver} isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} setIsOpen={setIsOpen} />
+            )}
             {(isOpen && isRemede && (
                 <ModalWindow
                     content={remede}

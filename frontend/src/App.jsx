@@ -9,6 +9,7 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom'
 
 function App() {
     const [isOpen, setIsOpen] = useState(false)
+    console.log(isOpen)
 
     //activité des éléments cliquables de la salle d'archives
     const [isClasseur, setIsClasseur] = useState(false)
