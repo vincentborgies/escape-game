@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import '../style/room.css'
 
 const Timer = ({ setGameOver, setIsOpenSuccess }) => {
@@ -9,39 +9,49 @@ const Timer = ({ setGameOver, setIsOpenSuccess }) => {
     }
 
     const [time, setTime] = useState(initialTime)
+    const timerRef = useRef()
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
-                clearInterval(interval)
-                setIsOpenSuccess(true)
-                setGameOver(true)
-            } else {
-                setTime((prevTime) => {
-                    let hours = prevTime.hours
-                    let minutes = prevTime.minutes
-                    let seconds = prevTime.seconds
+    // Fonction pour mettre à jour le temps restant
+    const updateTimer = () => {
+        if (time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
+            setIsOpenSuccess(true)
+            setGameOver(true)
+        } else {
+            setTime((prevTime) => {
+                let hours = prevTime.hours
+                let minutes = prevTime.minutes
+                let seconds = prevTime.seconds
 
-                    if (seconds === 0) {
-                        if (minutes === 0) {
-                            hours--
-                            minutes = 59
-                            seconds = 59
-                        } else {
-                            minutes--
-                            seconds = 59
-                        }
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        hours--
+                        minutes = 59
+                        seconds = 59
                     } else {
-                        seconds--
+                        minutes--
+                        seconds = 59
                     }
+                } else {
+                    seconds--
+                }
 
-                    return { hours, minutes, seconds }
-                })
-            }
-        }, 1000)
+                return { hours, minutes, seconds }
+            })
 
-        return () => clearInterval(interval)
-    }, [time, setGameOver])
+            // Mettre à jour le temps restant après 1 seconde
+            timerRef.current = setTimeout(updateTimer, 1000)
+        }
+    }
+
+    // Démarrer le chronomètre lorsque le composant est monté
+    React.useEffect(() => {
+        timerRef.current = setTimeout(updateTimer, 1000)
+
+        // Nettoyer le timer lorsque le composant est démonté
+        return () => {
+            clearTimeout(timerRef.current)
+        }
+    }, [])
 
     return (
         <div
